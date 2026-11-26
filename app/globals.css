@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    --color-bg-canvas: #F4F6F4;
+    --color-bg-surface: #FFFFFF;
+    --color-bg-elevated: #EDF1ED;
+    --color-bg-muted: #EDF1ED;
+    --color-text-primary: #202824;
+    --color-text-secondary: #5F6B65;
+    --color-text-muted: #64706A;
+    --color-border-subtle: #DCE2DD;
+    --color-border-strong: #C5CEC7;
+    --color-primary: #285C4D;
+    --color-primary-hover: #214A3F;
+    --color-primary-fg: #FFFFFF;
+    --color-focus-ring: rgba(40, 92, 77, 0.35);
+    --color-success: #246A46;
+    --color-success-bg: #EBF5EE;
+    --color-warning: #A3621A;
+    --color-warning-bg: #FAF3EB;
+    --color-danger: #B42318;
+    --color-danger-bg: #FEF3F2;
+    --color-info: #1D5D8C;
+    --color-info-bg: #EEF5FA;
+    --color-soft-sage: #E6EEE9;
+  }
+
+  [data-theme="dark"],
+  .dark {
+    --color-bg-canvas: #171C19;
+    --color-bg-surface: #222A25;
+    --color-bg-elevated: #2C3630;
+    --color-bg-muted: #1E2521;
+    --color-text-primary: #F1F2ED;
+    --color-text-secondary: #A7B3AA;
+    --color-text-muted: #748278;
+    --color-border-subtle: #2E3A33;
+    --color-border-strong: #415147;
+    --color-primary: #A2C0AE;
+    --color-primary-hover: #B4D1C0;
+    --color-primary-fg: #14241B;
+    --color-focus-ring: rgba(162, 192, 174, 0.45);
+    --color-success: #74C69D;
+    --color-success-bg: #1B2B22;
+    --color-warning: #E2A968;
+    --color-warning-bg: #2D2318;
+    --color-danger: #E57373;
+    --color-danger-bg: #331B1B;
+    --color-info: #79B5E0;
+    --color-info-bg: #182833;
+    --color-soft-sage: #1E2E25;
   }
 }
 
+@theme inline {
+  --color-canvas: var(--color-bg-canvas);
+  --color-surface: var(--color-bg-surface);
+  --color-elevated: var(--color-bg-elevated);
+  --color-muted: var(--color-bg-muted);
+  --color-ink: var(--color-text-primary);
+  --color-ink-secondary: var(--color-text-secondary);
+  --color-ink-muted: var(--color-text-muted);
+  --color-line: var(--color-border-subtle);
+  --color-line-strong: var(--color-border-strong);
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-fg: var(--color-primary-fg);
+  --color-ring: var(--color-focus-ring);
+  --color-sage: var(--color-soft-sage);
+  --color-amber: var(--color-warning);
+  --color-success: var(--color-success);
+  --color-danger: var(--color-danger);
+  --color-info: var(--color-info);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

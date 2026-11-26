@@ -20,6 +20,14 @@
 # local publishing storage
 /data/
 
+# internal docs & agent skills
+/docs/
+.agents/
+.claude/
+.hermes/
+AGENTS.md
+skills-lock.json
+
 # production
 /build
 
